@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using CleanArchitecture.Infra.Data.Context;
 using CleanArchitecture.Infra.IoC;
+using MediatR;
 
 namespace CleanArchitecture.Mvc
 {
@@ -32,7 +33,7 @@ namespace CleanArchitecture.Mvc
             services.AddDbContext<UniversityDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("UniversityDbConnection"));
-            }); 
+            });
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("UniversityIdentityDBConnection")));
@@ -42,6 +43,7 @@ namespace CleanArchitecture.Mvc
             services.AddControllersWithViews();
             services.AddRazorPages();
 
+            services.AddMediatR(typeof(Startup));
             RegisterServices(services);
         }
 
