@@ -31,9 +31,6 @@ namespace CleanArchitecture.Infra.IoC
             //Infra.Data Layer
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<UniversityDbContext>();
-
-
-
         }
     }
 }
